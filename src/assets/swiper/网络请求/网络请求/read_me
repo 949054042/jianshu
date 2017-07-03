@@ -1,0 +1,32 @@
+1、在 node_modules 中复制 axios/vue-axios 文件夹
+
+2、在src中将 data 文件夹复制进去
+
+3、查找 dev-server.js 文件
+
+//添加静态数据路由
+var app = express()
+
+var homeData=require('../src/data/homeData.json')
+var apiRoutes = express.Router()
+apiRoutes.get('/homeData',function (req,res) {
+  res.json({
+    data:homeData
+  })
+})
+app.use('/api',apiRoutes)
+
+var compiler = webpack(webpackConfig)
+
+
+4、在 src 中查找 main.js
+
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
+
+
+5、this.axios.get('/api/homeData').then((response) => {
+		          console.log(response.data.data.recommend_feeds);
+
+		        })
